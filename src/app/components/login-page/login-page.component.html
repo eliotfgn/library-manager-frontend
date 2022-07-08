@@ -1,0 +1,24 @@
+<div class="cont relative m-0">
+  <div class="h-full w-full absolute m-0">
+    <img src="../../../assets/images/login-background.jpg" alt="background image" height="1000" width="1500">
+  </div>
+  <div class="h-full w-full bg-green-500 opacity-30 absolute m-0"></div>
+
+  <div class="form-card bg-white absolute top-32 rounded-2xl">
+    <h1 class="text-2xl text-center mt-5">Connexion</h1>
+    <p class="w-10/12 m-auto mt-2 text-center">Bon retour cher lecteur! Veuillez entrer les informations de connexion.</p>
+
+    <form class="w-11/12 h-2/6" [formGroup]="form" (ngSubmit)="login()">
+      <div class="input">
+        <input type="text" formControlName="username" name="username" id="username" placeholder="nom d'utilisateur">
+      </div>
+      <div class="input">
+        <input type="password" formControlName="password" name="password" id="password" placeholder="mot de passe">
+      </div>
+      <button class="w-full bg-green-500 rounded-2xl text-white py-1">Se connecter</button>
+    </form>
+    <p class="w-11/12 m-auto mt-2 text-center">Vous n'avez pas de compte? <a href="/register">Inscrivez-vous</a>.</p>
+
+  </div>
+
+</div>
