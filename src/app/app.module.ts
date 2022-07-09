@@ -10,6 +10,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { HomeComponent } from './components/home/home.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import {TokenInterceptor} from "./token.interceptor";
+import { BookPageComponent } from './components/book-page/book-page.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
     LoginPageComponent,
     RegisterPageComponent,
     HomeComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    BookPageComponent
   ],
   imports: [
     BrowserModule,
