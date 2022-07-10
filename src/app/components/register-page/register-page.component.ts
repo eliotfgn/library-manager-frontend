@@ -38,9 +38,10 @@ export class RegisterPageComponent implements OnInit {
     this.payload.email = this.form.value.email;
     this.payload.password = this.form.value.password;
 
-    this.authService.register(this.payload).subscribe();
-
-    this.router.navigate(['']);
+    this.authService.register(this.payload).subscribe(data => {
+      this.router.navigateByUrl('');
+      },
+      error => {console.log(error)});
   }
 
 }

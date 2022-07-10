@@ -54,8 +54,7 @@ export class BookPageComponent implements OnInit {
   appearReservationForm() {
     this.reservationFormRef.nativeElement.style.opacity = "1";
     this.reservationFormRef.nativeElement.style.transform = "scale(1)";
-    this.filter.nativeElement.style.opacity = "0.5";
-    this.filter.nativeElement.style.zIndex = "0";
+    this.filter.nativeElement.style.display = "block";
 
     window.addEventListener('click', (event) => {
       if (event.target === this.filter.nativeElement) {
@@ -67,8 +66,7 @@ export class BookPageComponent implements OnInit {
   disappearReservationForm() {
     this.reservationFormRef.nativeElement.style.opacity = "0";
     this.reservationFormRef.nativeElement.style.transform = "scale(0)";
-    this.filter.nativeElement.style.opacity = "0";
-    this.filter.nativeElement.style.zIndex = "-1";
+    this.filter.nativeElement.style.display = "none";
   }
 
   reserve() {
