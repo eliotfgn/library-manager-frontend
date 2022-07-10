@@ -1,0 +1,32 @@
+<app-side-menu></app-side-menu>
+
+<div class="book-content">
+  <div class="book-section">
+    <div class="book-cover"></div>
+    <div class="book-info">
+      <h2 class="book-title">{{book.title}}</h2>
+      <p class="">{{book.author}}</p>
+      <p class="book-description">{{book.description}}</p>
+      <p *ngIf="book.nbFree<=1" class="free text-green-500">{{book.nbFree}} exemplaire disponible</p>
+      <p *ngIf="book.nbFree>1" class="free text-green-500">{{book.nbFree}} exemplaires disponibles</p>
+      <button class="reserv-button bg-green-500 rounded-3xl text-white w-24 mt-5" (click)="appearReservationForm()">Réserver</button>
+    </div>
+  </div>
+</div>
+
+<div class="form-card bg-white absolute top-32 rounded-2xl" #reservForm>
+  <h2 class="reserv-title text-center mt-5">Veuillez entrer la période de réservation</h2>
+
+  <form class="w-11/12 h-2/6" [formGroup]="reservationForm">
+    <label for="startDate">date de début</label>
+    <div class="input">
+      <input type="date" formControlName="startDate" name="startDate" id="startDate" placeholder="date de début">
+    </div>
+    <label for="endDate" class="mt-3">date de fin</label>
+    <div class="input">
+      <input type="date" formControlName="endDate" name="endDate" id="endDate" placeholder="date de fin">
+    </div>
+    <button class="bg-green-500 rounded-3xl text-white w-24 mt-5" (click)="reserve()">Confirmer</button>
+  </form>
+</div>
+<div class="filter h-screen w-screen bg-black absolute top-0" #filter></div>

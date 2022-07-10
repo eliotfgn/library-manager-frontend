@@ -19,4 +19,19 @@ export class BookService {
     return this.http.get<Book[]>('http://localhost:8080/api/books/by-tag/' + tag);
   }
 
+  public getBook(id: number): Observable<Book> {
+    return this.http.get<Book>('http://localhost:8080/api/books/' + id);
+  }
+
+  public getBookCover(title: string): Observable<any> {
+    return this.http.get('https://www.googleapis.com/books/v1/volumes?q='+this.formatTitle(title)+'&maxResults=3');
+  }
+
+  private formatTitle(title: string): string {
+    let words = title.split(" ");
+    title = words.join("+");
+    title = title.replace(",", "");
+    return title;
+  }
+
 }

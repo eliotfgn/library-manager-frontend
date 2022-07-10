@@ -33,11 +33,13 @@ export class AuthService {
         localStorage.clear();
         // @ts-ignore
         localStorage.setItem('token', data.token);
+        localStorage.setItem('username', payload.username);
       }));
   }
 
   public getCurrentLoggedInUser(): string {
-    return this.currentLoggedInUser;
+    // @ts-ignore
+    return localStorage.getItem('username');
   }
 
   public setCurrentLoggedInUser(user: string) {

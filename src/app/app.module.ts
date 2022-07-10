@@ -16,6 +16,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
+  { path: 'book/:id', component: BookPageComponent}
 ]
 
 @NgModule({
