@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {BookService} from "../../services/book.service";
 import {Book} from "../../payloads/book.model";
 
@@ -57,12 +57,12 @@ export class HomeComponent implements OnInit {
   slideLeft(index: number) {
     let bookSection = document.getElementsByClassName('books-section')[index];
     // @ts-ignore
-    bookSection.style.transform = 'translateX(-75%)';
+    bookSection.style.transform = 'translateX(-37.5%)';
   }
 
   slideRight(index: number) {
     let bookSection = document.getElementsByClassName('books-section')[index];
     // @ts-ignore
-    bookSection.style.transform = 'translateX(75%)';
+    bookSection.style.transform = 'translateX(0%)';
   }
 }

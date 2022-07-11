@@ -4,12 +4,15 @@
   <div class="mt-10 w-11/12 overflow-hidden relative" *ngFor="let tag of tags; let index = index">
     <button *ngIf="sizeForTag(tag)>3" class="slide-button slide-button-left" (click)="slideRight(index)"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
 
-    <button *ngIf="sizeForTag(tag)>3" class="slide-button slide-button-right" (click)="slideLeft(index)"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+    <button *ngIf="sizeForTag(tag)>3" class="slide-button slide-button-right" (click)="slideLeft(index)">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
 
     <h1 class="tag">{{tag}}</h1>
-    <div class="books-section overflow-hidden h-40 mt-3">
+    <div class="books-section overflow-hidden h-40 mt-3" #bookSection>
 
-      <div class="book-item h-40 overflow-hidden" *ngFor="let book of booksByTag.get(tag) | slice:0: 7">
+
+      <div class="book-item h-40 overflow-hidden" *ngFor="let book of booksByTag?.get(tag)?.slice(0, 6)">
         <div class="book-cover {{getColor()}}"></div>
         <div class="book-info">
           <h2 class="book-title"><a href="book/{{book.id}}">{{book.title}}</a></h2>
