@@ -4,10 +4,10 @@
 }
 
 .form-card {
-  width: 24%;
-  height: 65%;
+  width: 350px;
+  height: 400px;
+  margin-left: auto;
   z-index: 900;
-  margin-left: 37%;
 }
 
 h1 {

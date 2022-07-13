@@ -4,15 +4,15 @@
 }
 
 .form-card {
-  width: 24%;
-  height: 80%;
+  width: 350px;
+  height: 550px;
   z-index: 900;
-  margin-left: 37%;
+  margin-left: auto;
 }
 
 h1 {
   color: #291356;
-  font-family: Epiloque-SemiBold;
+  font-family: Epiloque-SemiBold, sans-serif;
   display: block;
 }
 
