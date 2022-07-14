@@ -1,19 +1,28 @@
 <app-side-menu></app-side-menu>
 
-<div class="home-content w-full ml-72" *ngIf="booksLoaded">
-  <div class="mt-10 w-11/12 overflow-hidden relative" *ngFor="let tag of tags; let index = index">
-    <button *ngIf="sizeForTag(tag)>3" class="slide-button slide-button-left" (click)="slideRight(index)"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+<div class="home-content" *ngIf="booksLoaded">
+  <div class="tag-section mt-10 w-full overflow-x-hidden relative" *ngFor="let tag of tags; let index = index">
 
-    <button *ngIf="sizeForTag(tag)>3" class="slide-button slide-button-right" (click)="slideLeft(index)">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    <button #leftButton class="slide-button grid place-content-center slide-button-left"
+            [ngStyle]="{'opacity': sizeForTag(tag)>3 && showLeftButton.get(tag) ? '1' : '0',
+            'cursor': sizeForTag(tag)>3 && showLeftButton.get(tag) ? 'pointer' : 'default'}"
+            (click)="slideRight(index)">
+      <svg class="m-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+
+    <button #rightButton [ngStyle]="{'opacity': sizeForTag(tag)>3 && showRightButton.get(tag) ? '1' : '0',
+    'cursor': sizeForTag(tag)>3 && showRightButton.get(tag) ? 'pointer' : 'default'}"
+            class="slide-button slide-button-right" (click)="slideLeft(index)">
+      <svg class="m-auto w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
     </button>
 
     <h1 class="tag">{{tag}}</h1>
-    <div class="books-section overflow-hidden h-40 mt-3" #bookSection>
+    <div class="books-section" #bookSection>
 
 
-      <div class="book-item h-40 overflow-hidden" *ngFor="let book of booksByTag?.get(tag)?.slice(0, 6)">
-        <div class="book-cover {{getColor()}}"></div>
+      <div class="book-item mt-4 ml-2 transform transition-transform hover:scale-105"
+           *ngFor="let book of booksByTag?.get(tag)?.slice(0, 6)">
+        <div class="book-cover {{book.cover}}"></div>
         <div class="book-info">
           <h2 class="book-title"><a href="book/{{book.id}}">{{book.title}}</a></h2>
           <p class="book-author">{{book.author}}</p>

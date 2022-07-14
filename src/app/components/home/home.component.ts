@@ -12,7 +12,11 @@ export class HomeComponent implements OnInit {
   booksLoaded = false;
   booksByTag: Map<string, Book[]> = new Map();
   color: string;
-  colors: string[] = ['bg-indigo-400', 'bg-yellow-200', 'bg-red-200', 'bg-green-200', 'bg-blue-300', 'bg-magenta-200', 'bg-orange-200', 'bg-purple-200'];
+  colors: string[] = ['bg-indigo-400', 'bg-yellow-200', 'bg-red-200', 'bg-green-200', 'bg-blue-300', 'bg-red-200', 'bg-orange-200', 'bg-purple-200', 'bg-red-400'];
+  @ViewChild('leftButton', {static: true}) leftButton: any;
+  @ViewChild('rightButton', {static: true}) rightButton: { toArray: () => { nativeElement: any; }[]; };
+  showLeftButton: Map<string, boolean> = new Map<string, boolean>();
+  showRightButton: Map<string, boolean> = new Map<string, boolean>();
 
   constructor(private bookService: BookService) { }
 
@@ -26,6 +30,10 @@ export class HomeComponent implements OnInit {
         this.getBooksByTag(this.tags[i]);
       }
       this.booksLoaded = true;
+      for (let i = 0; i < this.tags.length; i++) {
+        this.showLeftButton.set(this.tags[i], false);
+        this.showRightButton.set(this.tags[i], true);
+      }
     });
 
   }
@@ -36,7 +44,10 @@ export class HomeComponent implements OnInit {
       }, error => {
       console.log(error);
       }, () => {
-      console.log(this.booksByTag);
+      // @ts-ignore
+        for (let book of this.booksByTag.get(tag)) {
+          book.cover = this.getColor();
+        }
     }
     );
   }
@@ -55,14 +66,22 @@ export class HomeComponent implements OnInit {
   }
 
   slideLeft(index: number) {
-    let bookSection = document.getElementsByClassName('books-section')[index];
-    // @ts-ignore
-    bookSection.style.transform = 'translateX(-37.5%)';
+    if (this.sizeForTag(this.tags[index]) > 3) {
+      let bookSection = document.getElementsByClassName('books-section')[index];
+      // @ts-ignore
+      bookSection.style.transform = 'translateX(-43%)';
+      this.showRightButton.set(this.tags[index], false);
+      this.showLeftButton.set(this.tags[index], true);
+    }
   }
 
   slideRight(index: number) {
-    let bookSection = document.getElementsByClassName('books-section')[index];
-    // @ts-ignore
-    bookSection.style.transform = 'translateX(0%)';
+    if (this.sizeForTag(this.tags[index]) > 3) {
+      let bookSection = document.getElementsByClassName('books-section')[index];
+      // @ts-ignore
+      bookSection.style.transform = 'translateX(0%)';
+      this.showRightButton.set(this.tags[index], true);
+      this.showLeftButton.set(this.tags[index], false);
+    }
   }
 }
