@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import {TokenInterceptor} from "./token.interceptor";
 import { BookPageComponent } from './components/book-page/book-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
     RegisterPageComponent,
     HomeComponent,
     SideMenuComponent,
-    BookPageComponent
+    BookPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
