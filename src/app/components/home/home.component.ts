@@ -56,9 +56,8 @@ export class HomeComponent implements OnInit {
     return this.tags;
   }
 
-  sizeForTag(tag: string): number {
-    // @ts-ignore
-    return this.booksByTag.get(tag).length;
+  sizeForTag(tag: string): number | void {
+    return this.booksByTag.get(tag)?.length;
   }
 
   getColor(): string {

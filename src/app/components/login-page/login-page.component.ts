@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {LoginPayload} from "../../payloads/login.payload";
 import {FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -15,7 +15,8 @@ export class LoginPageComponent implements OnInit {
   payload: LoginPayload;
   logged: boolean = true;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
+    console.log(this.route.snapshot.url.toString());
     this.payload = {
       username: '',
       password: ''
