@@ -13,7 +13,6 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authService.getCurrentLoggedInUser();
-    console.log(this.user);
   }
 
 }

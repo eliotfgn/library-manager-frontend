@@ -16,7 +16,6 @@ export class LoginPageComponent implements OnInit {
   logged: boolean = true;
 
   constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute) {
-    console.log(this.route.snapshot.url.toString());
     this.payload = {
       username: '',
       password: ''

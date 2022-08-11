@@ -13,7 +13,8 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  register(payload: RegisterPayload): Observable<any> {
+  register(payload: RegisterPayload): Observable<boolean> {
+    let logged = false;
     return this.http.post('http://localhost:8080/api/auth/signup', payload)
       .pipe(map(data => {
         // @ts-ignore
@@ -21,19 +22,24 @@ export class AuthService {
           username: payload.username,
           password: payload.password
         };
-        this.login(loginPayload).subscribe();
-        console.log(this.currentLoggedInUser);
+        this.login(loginPayload).subscribe(data => {},
+          error => {console.log(error)},
+          () => {logged = true});
+        return logged;
       }));
   }
 
   login(payload: LoginPayload): Observable<any> {
+    console.log('login started')
     this.setCurrentLoggedInUser(payload.username);
     return this.http.post('http://localhost:8080/api/auth/login', payload)
-      .pipe(map(data => {
-        localStorage.clear();
-        // @ts-ignore
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', payload.username);
+      .pipe(
+        map(data => {
+          localStorage.clear();
+          // @ts-ignore
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('username', payload.username);
+          console.log('local storage changed');
       }));
   }
 

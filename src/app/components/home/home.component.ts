@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
     this.bookService.getTags().subscribe(data => {
       this.tags = data;
     }, error => {
-      console.log(error);
     }, () => {
       for (let i = 0; i < this.tags.length; i++) {
         this.getBooksByTag(this.tags[i]);
@@ -42,7 +41,6 @@ export class HomeComponent implements OnInit {
     this.bookService.getBooksByTag(tag).subscribe(data => {
       this.booksByTag.set(tag, data);
       }, error => {
-      console.log(error);
       }, () => {
       // @ts-ignore
         for (let book of this.booksByTag.get(tag)) {
