@@ -1,0 +1,11 @@
+.form-div {
+  @apply w-72 h-10 relative border border-indigo-300 rounded;
+}
+
+.form-input {
+  @apply w-full h-full p-4 outline-none bg-transparent;
+}
+
+.form-label {
+  @apply block absolute bottom-9;
+}

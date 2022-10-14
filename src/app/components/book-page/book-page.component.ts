@@ -14,7 +14,7 @@ import {ReservationService} from "../../services/reservation.service";
 })
 export class BookPageComponent implements OnInit {
   reservationForm: FormGroup;
-  book: Book;
+  book: any;
   reservationPayload: ReservationPayload;
   @ViewChild('reservForm', {static:true}) reservationFormRef: ElementRef;
   @ViewChild('filter', {static:true}) filter: ElementRef;
@@ -36,9 +36,10 @@ export class BookPageComponent implements OnInit {
     });
 
     let id = this.activeRoute.snapshot.paramMap.get("id");
-    if (typeof id === "string") {
+    /*if (typeof id === "string") {
       this.bookService.getBook(Number.parseInt(id)).subscribe(data => {
         this.book = data;
+
       }, error => {},
         () => {
         this.bookService.getBookCover(this.book.title).subscribe(volume =>{
@@ -47,7 +48,10 @@ export class BookPageComponent implements OnInit {
           }
         });
         });
-    }
+    }*/
+
+    this.book = this.activeRoute.snapshot.data;
+    console.log(this.book);
 
   }
 
