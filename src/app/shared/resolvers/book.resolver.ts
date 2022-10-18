@@ -16,9 +16,10 @@ export class BookResolver implements Resolve<any> {
   constructor(private bookService: BookService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    console.log('start resolving');
     const id: string | null = route.paramMap.get('id');
     if (id) {
-      return this.bookService.getBook(Number.parseInt(id));
+      return this.bookService.getBook(id);
     } else {
       throw new Error('No such id');
     }
