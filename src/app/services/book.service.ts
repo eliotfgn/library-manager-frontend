@@ -19,7 +19,7 @@ export class BookService {
     return this.http.get<Book[]>('http://localhost:8080/api/books/by-tag/' + tag);
   }
 
-  public getBook(id: number): Observable<Book> {
+  public getBook(id: string): Observable<Book> {
     return this.http.get<Book>('http://localhost:8080/api/books/' + id);
   }
 
