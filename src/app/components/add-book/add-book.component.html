@@ -1,4 +1,4 @@
-<div class="relative left-72 top-20">
+<div class="absolute left-72 top-20" [formGroup]="bookForm" (ngSubmit)="addBook()">
   <form class="flex-col space-y-10">
     <div class="form-div">
       <label class="form-label" for="title">Title</label>
@@ -11,14 +11,23 @@
     </div>
 
     <div class="form-div">
+      <label class="form-label" for="year">Year</label>
+      <input class="form-input" type="number" name="year" id="year">
+    </div>
+
+    <div class="form-div">
+      <label class="form-label" for="collection">Collection</label>
+      <input class="form-input" type="text" name="collection" id="collection">
+    </div>
+
+    <div class="form-div">
       <label class="form-label" for="nbFree">Free samples</label>
       <input class="form-input" type="number" name="nbFree" id="nbFree">
     </div>
 
-    <div class="h-60 w-72 border border-indigo-300">
-      <label class="form-label" for="description">Description</label>
-      <textarea rows="4" cols="31" class="w-72" type="text" name="description" id="description"></textarea>
+    <div class="relative">
+      <label class="block font-bold text-violet-900" for="description">Description</label>
+      <textarea rows="4" cols="31" class="w-96 bg-transparent text-violet-900 text-sm border border-indigo-300 rounded p-2 outline-none" type="text" name="description" id="description"></textarea>
     </div>
-
   </form>
 </div>

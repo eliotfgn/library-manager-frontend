@@ -16,7 +16,8 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 import {BookResolver} from "./shared/resolvers/book.resolver";
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
+  { path: 'catalog', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
   { path: 'book/:id', component: BookPageComponent, resolve: {book: BookResolver} },

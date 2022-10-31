@@ -34,6 +34,7 @@ export class BookPageComponent implements OnInit {
       'startDate': new FormControl(null),
       'endDate': new FormControl(null),
     });
+    console.log('start book component');
 
     let id = this.activeRoute.snapshot.paramMap.get("id");
     /*if (typeof id === "string") {
@@ -50,7 +51,7 @@ export class BookPageComponent implements OnInit {
         });
     }*/
 
-    this.book = this.activeRoute.snapshot.data;
+    this.book = this.activeRoute.snapshot.data['book'];
     console.log(this.book);
 
   }
