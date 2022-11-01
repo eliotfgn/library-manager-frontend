@@ -1,5 +1,5 @@
 <div class="home-content" *ngIf="booksLoaded">
-  <div class="tag-section mt-10 w-full overflow-x-hidden relative" *ngFor="let tag of tags; let index = index">
+  <div class="tag-section mb-10 w-full overflow-x-hidden relative" *ngFor="let tag of tags; let index = index">
 
     <button #leftButton class="slide-button grid place-content-center slide-button-left"
             [ngStyle]="{'opacity': sizeForTag(tag)>3 && showLeftButton.get(tag) ? '1' : '0',
