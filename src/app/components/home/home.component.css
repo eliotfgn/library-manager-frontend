@@ -75,3 +75,16 @@
 .slide-button-right {
   right: 20px;
 }
+
+.more-btn {
+  @apply rounded-full h-10 w-10 bg-white flex items-center justify-center relative top-1/2 ml-8 transition-transform;
+}
+
+.more-btn:hover {
+  @apply scale-110;
+}
+
+.more-btn svg {
+  @apply stroke-2 text-[#081b34];
+}
+
