@@ -13,7 +13,11 @@
 }
 
 .tag-section {
-  height: 185px;
+  transition: all ease-in-out 200ms;
+}
+
+.tag-section {
+  @apply h-52;
 }
 
 .book-title {
@@ -41,6 +45,10 @@
   margin-left: 20px;
   width: 270px;
   border-radius: 10px;
+}
+
+.book-item {
+  @apply h-36;
 }
 
 .book-cover {
@@ -88,3 +96,38 @@
   @apply stroke-2 text-[#081b34];
 }
 
+.section-full {
+  transition: all ease-in-out 200ms;
+}
+
+.section-full {
+  @apply bg-white h-[93vh] absolute -top-20 p-4 rounded-lg z-50;
+}
+
+.section-full .books-section {
+  @apply flex-wrap w-full h-full;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+.invisible-scrollbar {
+  scrollbar-width: 2px;
+}
+
+.section-full .books-section .book-item {
+  @apply h-36;
+}
+
+.section-full .more-btn {
+  @apply hidden;
+}
+
+.close-btn {
+  @apply absolute right-4 top-4;
+}
+
+.tag-section .close-btn {
+  @apply hidden;
+}
