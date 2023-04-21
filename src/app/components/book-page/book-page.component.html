@@ -1,4 +1,6 @@
-<div class="book-content border">
+<app-side-menu></app-side-menu>
+
+<div class="book-content">
   <div class="book-section">
     <div class="book-cover"></div>
     <div class="book-info">
@@ -16,7 +18,7 @@
   <h2 class="reserv-title text-center mt-5">Veuillez entrer la période de réservation</h2>
 
   <form class="w-11/12 h-2/6" [formGroup]="reservationForm">
-    <label for="startDate">date de début</label>
+  <label for="startDate">date de début</label>
     <div class="input">
       <input type="date" formControlName="startDate" name="startDate" id="startDate" placeholder="date de début">
     </div>

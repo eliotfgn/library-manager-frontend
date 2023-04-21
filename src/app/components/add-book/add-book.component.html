@@ -1,33 +1,41 @@
-<div class="absolute left-72 top-20" [formGroup]="bookForm" (ngSubmit)="addBook()">
-  <form class="flex-col space-y-10">
-    <div class="form-div">
-      <label class="form-label" for="title">Title</label>
-      <input class="form-input" type="text" name="title" id="title">
+<div class="absolute" >
+  <form [formGroup]="bookForm" (ngSubmit)="addBook()">
+    <div class="flex-col space-y-10">
+      <div class="form-div">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-input" type="text" name="title" id="title" formControlName="title">
+      </div>
+
+      <div class="form-div">
+        <label class="form-label" for="author">Author</label>
+        <input class="form-input" type="text" name="author" id="author" formControlName="author">
+      </div>
+
+      <div class="form-div">
+        <label class="form-label" for="year">Year</label>
+        <input class="form-input" type="number" name="year" id="year" formControlName="year">
+      </div>
+
+      <div class="form-div">
+        <label class="form-label" for="collection">Collection</label>
+        <input class="form-input" type="text" name="collection" id="collection" formControlName="collection">
+      </div>
+
+      <div class="form-div">
+        <label class="form-label" for="nbFree">Free samples</label>
+        <input class="form-input" type="number" name="nbFree" id="nbFree" formControlName="nbFree">
+      </div>
+
+      <div class="relative">
+        <label class="block font-bold text-violet-900" for="description">Description</label>
+        <textarea rows="4" cols="31"
+                  class="w-96 bg-transparent text-violet-900 text-sm border border-indigo-300 rounded p-2 outline-none"
+                  type="text" name="description" id="description" formControlName="description">
+
+        </textarea>
+      </div>
     </div>
 
-    <div class="form-div">
-      <label class="form-label" for="author">Author</label>
-      <input class="form-input" type="text" name="author" id="author">
-    </div>
-
-    <div class="form-div">
-      <label class="form-label" for="year">Year</label>
-      <input class="form-input" type="number" name="year" id="year">
-    </div>
-
-    <div class="form-div">
-      <label class="form-label" for="collection">Collection</label>
-      <input class="form-input" type="text" name="collection" id="collection">
-    </div>
-
-    <div class="form-div">
-      <label class="form-label" for="nbFree">Free samples</label>
-      <input class="form-input" type="number" name="nbFree" id="nbFree">
-    </div>
-
-    <div class="relative">
-      <label class="block font-bold text-violet-900" for="description">Description</label>
-      <textarea rows="4" cols="31" class="w-96 bg-transparent text-violet-900 text-sm border border-indigo-300 rounded p-2 outline-none" type="text" name="description" id="description"></textarea>
-    </div>
+    <button class="mt-2 bg-green-500 rounded-2xl text-white py-1 px-3 hover:-translate-y-1 transition-all" type="submit">Submit</button>
   </form>
 </div>

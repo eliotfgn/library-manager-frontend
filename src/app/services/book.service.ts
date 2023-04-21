@@ -34,4 +34,9 @@ export class BookService {
     return title;
   }
 
+  public addBook(payload: Book): Observable<any> {
+    console.log(payload);
+    return this.http.post('http://localhost:8080/api/books/add', payload);
+  }
+
 }
