@@ -1,5 +1,5 @@
 <div class="home-content" *ngIf="booksLoaded">
-  <div class="tag-section mt-10 w-full overflow-x-hidden relative" *ngFor="let tag of tags; let index = index">
+  <div class="tag-section mb-10 w-full overflow-x-hidden relative" *ngFor="let tag of tags; let index = index">
 
     <button #leftButton class="slide-button grid place-content-center slide-button-left"
             [ngStyle]="{'opacity': sizeForTag(tag)>3 && showLeftButton.get(tag) ? '1' : '0',
@@ -15,11 +15,11 @@
     </button>
 
     <h1 class="tag">{{tag}}</h1>
-    <div class="books-section" #bookSection>
+    <div class="books-section invisible-scrollbar" #bookSection>
 
 
       <div class="book-item mt-4 ml-2 transform transition-transform hover:scale-105"
-           *ngFor="let book of booksByTag?.get(tag)?.slice(0, 6)">
+           *ngFor="let book of getBooks(tag, index)">
         <div class="book-cover {{book.cover}}"></div>
         <div class="book-info">
           <h2 class="book-title"><a href="book/{{book.id}}">{{book.title}}</a></h2>
@@ -27,6 +27,23 @@
 
         </div>
       </div>
+
+      <!-- View more button -->
+      <div class="more-btn"
+           (click)="appearSection(index)"
+           *ngIf="sizeForTag(tag)>6"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="close-btn" (click)="hideSection(index)">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
     </div>
   </div>
 </div>
+<div class="filter hidden h-screen w-screen bg-black opacity-30 fixed top-0 left-0" #filter></div>

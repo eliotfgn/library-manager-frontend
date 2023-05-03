@@ -12,12 +12,16 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import {TokenInterceptor} from "./token.interceptor";
 import { BookPageComponent } from './components/book-page/book-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
+import {BookResolver} from "./shared/resolvers/book.resolver";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
+  { path: 'catalog', component: HomeComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: 'book/:id', component: BookPageComponent}
+  { path: 'book/:id', component: BookPageComponent, resolve: {book: BookResolver} },
+  { path: 'admin/add/book', component: AddBookComponent }
 ]
 
 @NgModule({
@@ -28,7 +32,8 @@ const routes: Routes = [
     HomeComponent,
     SideMenuComponent,
     BookPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

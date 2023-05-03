@@ -1,8 +1,6 @@
 .book-content {
   height: 80vh;
   width: 75vw;
-  margin-top: 100px;
-  margin-left: 23%;
 }
 
 .book-cover {
@@ -10,7 +8,6 @@
   height: 100%;
   background: #8f4b4b;
   border-radius: 20px;
-
 }
 
 .book-section {

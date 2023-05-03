@@ -30,12 +30,12 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-  login() {
+  async login() {
     this.payload.username = this.form.value.username;
     this.payload.password = this.form.value.password;
 
-    this.authService.login(this.payload).subscribe(data => {
-      this.router.navigateByUrl('');
+    this.authService.login(this.payload).subscribe(async data => {
+        await this.router.navigateByUrl('');
       },
         error => {
       if (error.status == 403) {

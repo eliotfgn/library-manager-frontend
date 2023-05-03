@@ -54,7 +54,8 @@ export class HomeComponent implements OnInit {
     return this.tags;
   }
 
-  sizeForTag(tag: string): number | void {
+  sizeForTag(tag: string): number {
+    // @ts-ignore
     return this.booksByTag.get(tag)?.length;
   }
 
@@ -80,5 +81,31 @@ export class HomeComponent implements OnInit {
       this.showRightButton.set(this.tags[index], true);
       this.showLeftButton.set(this.tags[index], false);
     }
+  }
+
+  getBooks(tag: string, index: number) {
+    let section = document.getElementsByClassName('tag-section')[index];
+    if (section.classList.contains('tag-section')) {
+      return this.booksByTag?.get(tag)?.slice(0, 6);
+    } else {
+      return this.booksByTag?.get(tag);
+    }
+  }
+
+  appearSection(index: number) {
+    let section = document.getElementsByClassName('tag-section')[index];
+    let filter = document.getElementsByClassName('filter')[0];
+    filter.classList.remove('hidden');
+    section.classList.remove('tag-section');
+    section.classList.add('section-full');
+    this.slideRight(index);
+  }
+
+  hideSection(index: number) {
+    let section = document.getElementsByClassName('section-full')[0];
+    let filter = document.getElementsByClassName('filter')[0];
+    filter.classList.add('hidden');
+    section.classList.remove('section-full');
+    section.classList.add('tag-section');
   }
 }

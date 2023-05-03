@@ -19,7 +19,7 @@ export class BookService {
     return this.http.get<Book[]>('http://localhost:8080/api/books/by-tag/' + tag);
   }
 
-  public getBook(id: number): Observable<Book> {
+  public getBook(id: string): Observable<Book> {
     return this.http.get<Book>('http://localhost:8080/api/books/' + id);
   }
 
@@ -32,6 +32,11 @@ export class BookService {
     title = words.join("+");
     title = title.replace(",", "");
     return title;
+  }
+
+  public addBook(payload: Book): Observable<any> {
+    console.log(payload);
+    return this.http.post('http://localhost:8080/api/books/add', payload);
   }
 
 }
